@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="bg" x1="18" y1="12" x2="111" y2="119" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2fe0ff"/>
+      <stop offset=".5" stop-color="#1778ff"/>
+      <stop offset="1" stop-color="#7547f3"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(38 25) rotate(48) scale(92)">
+      <stop stop-color="#fff" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#001637" flood-opacity=".52"/>
+    </filter>
+  </defs>
+  <rect x="7" y="7" width="114" height="114" rx="31" fill="url(#bg)" filter="url(#shadow)"/>
+  <rect x="7.75" y="7.75" width="112.5" height="112.5" rx="30.25" fill="none" stroke="#fff" stroke-opacity=".34" stroke-width="1.5"/>
+  <rect x="7" y="7" width="114" height="114" rx="31" fill="url(#glow)"/>
+  <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="9">
+    <path d="M29 40h10c10.5 0 16 4.8 21.3 13.5l9.1 15C74.7 77.2 80.2 82 91 82h8"/>
+    <path d="m90 72 10 10-10 10"/>
+    <path d="M29 88h10c10.5 0 16-4.8 21.3-13.5l9.1-15C74.7 50.8 80.2 46 91 46h8"/>
+    <path d="m90 36 10 10-10 10"/>
+  </g>
+</svg>

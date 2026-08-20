@@ -1,0 +1,236 @@
+#dp-random-root,
+#dp-random-root * {
+  box-sizing: border-box !important;
+  font-family: Avenir, "Avenir Next", Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+#dp-random-root {
+  --dp-bg: rgba(9, 18, 38, 0.97);
+  --dp-border: rgba(255, 255, 255, 0.15);
+  --dp-muted: #aebbd1;
+  --dp-text: #f8fbff;
+  --dp-blue: #18a9ff;
+  bottom: 24px !important;
+  color: var(--dp-text) !important;
+  position: fixed !important;
+  right: 24px !important;
+  z-index: 2147483646 !important;
+}
+
+#dp-random-root.dp-random-player {
+  display: none !important;
+}
+
+.dp-random-fab {
+  align-items: center !important;
+  background: linear-gradient(145deg, #30d6ff 0%, #1976ff 48%, #6c45e8 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45), 0 0 28px rgba(31, 143, 255, 0.28) !important;
+  color: #fff !important;
+  cursor: pointer !important;
+  display: flex !important;
+  height: 58px !important;
+  justify-content: center !important;
+  margin-left: auto !important;
+  padding: 0 !important;
+  position: relative !important;
+  transition: transform 150ms ease, filter 150ms ease !important;
+  width: 58px !important;
+}
+
+.dp-random-fab:hover {
+  filter: brightness(1.1) !important;
+  transform: translateY(-2px) rotate(-4deg) !important;
+}
+
+.dp-random-fab:focus-visible,
+.dp-random-action:focus-visible,
+.dp-random-switch input:focus-visible + span {
+  outline: 3px solid #fff !important;
+  outline-offset: 3px !important;
+}
+
+.dp-random-die {
+  align-items: center !important;
+  display: flex !important;
+  height: 29px !important;
+  justify-content: center !important;
+  width: 29px !important;
+}
+
+.dp-random-die svg {
+  display: block !important;
+  height: 29px !important;
+  width: 29px !important;
+}
+
+.dp-random-panel {
+  backdrop-filter: blur(18px) !important;
+  background: var(--dp-bg) !important;
+  border: 1px solid var(--dp-border) !important;
+  border-radius: 18px !important;
+  bottom: 70px !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55) !important;
+  display: none !important;
+  min-width: 310px !important;
+  overflow: hidden !important;
+  padding: 16px !important;
+  position: absolute !important;
+  right: 0 !important;
+}
+
+#dp-random-root.dp-random-open .dp-random-panel {
+  animation: dp-random-rise 150ms ease-out !important;
+  display: block !important;
+}
+
+@keyframes dp-random-rise {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.dp-random-heading {
+  align-items: center !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  margin-bottom: 12px !important;
+}
+
+.dp-random-title {
+  color: var(--dp-text) !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.01em !important;
+  margin: 0 !important;
+}
+
+.dp-random-count {
+  background: rgba(42, 163, 255, 0.16) !important;
+  border: 1px solid rgba(75, 184, 255, 0.32) !important;
+  border-radius: 999px !important;
+  color: #9bdcff !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 4px 8px !important;
+}
+
+.dp-random-actions {
+  display: grid !important;
+  gap: 8px !important;
+}
+
+.dp-random-action {
+  align-items: center !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.11) !important;
+  border-radius: 12px !important;
+  color: var(--dp-text) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  font-size: 14px !important;
+  font-weight: 750 !important;
+  gap: 10px !important;
+  line-height: 1.25 !important;
+  padding: 12px 13px !important;
+  text-align: left !important;
+  transition: background 130ms ease, border-color 130ms ease !important;
+  width: 100% !important;
+}
+
+.dp-random-action:hover {
+  background: rgba(43, 159, 255, 0.18) !important;
+  border-color: rgba(75, 184, 255, 0.45) !important;
+}
+
+.dp-random-action[disabled] {
+  cursor: not-allowed !important;
+  opacity: 0.42 !important;
+}
+
+.dp-random-action-icon {
+  align-items: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  width: 22px !important;
+}
+
+.dp-random-action-icon svg {
+  display: block !important;
+  height: 20px !important;
+  width: 20px !important;
+}
+
+.dp-random-settings {
+  border-top: 1px solid var(--dp-border) !important;
+  display: grid !important;
+  gap: 10px !important;
+  margin-top: 13px !important;
+  padding-top: 13px !important;
+}
+
+.dp-random-switch {
+  align-items: center !important;
+  color: var(--dp-muted) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  font-size: 12px !important;
+  gap: 9px !important;
+  line-height: 1.35 !important;
+}
+
+.dp-random-switch input {
+  height: 16px !important;
+  margin: 0 !important;
+  accent-color: var(--dp-blue) !important;
+  width: 16px !important;
+}
+
+.dp-random-help {
+  color: #7e8da8 !important;
+  font-size: 10px !important;
+  line-height: 1.45 !important;
+  margin: 2px 0 0 !important;
+}
+
+.dp-random-toast {
+  background: rgba(7, 14, 29, 0.98) !important;
+  border: 1px solid var(--dp-border) !important;
+  border-radius: 12px !important;
+  bottom: 70px !important;
+  box-shadow: 0 12px 38px rgba(0, 0, 0, 0.5) !important;
+  color: var(--dp-text) !important;
+  display: none !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  max-width: 330px !important;
+  padding: 11px 13px !important;
+  position: absolute !important;
+  right: 0 !important;
+}
+
+.dp-random-toast.dp-random-toast-show {
+  display: block !important;
+}
+
+@media (max-width: 520px) {
+  #dp-random-root {
+    bottom: 16px !important;
+    right: 16px !important;
+  }
+
+  .dp-random-panel {
+    max-width: calc(100vw - 32px) !important;
+    min-width: 290px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #dp-random-root *,
+  #dp-random-root *::before,
+  #dp-random-root *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,51 @@
+"use strict";
+
+const assert = require("node:assert/strict");
+const core = require("../random-core.js");
+
+const base = "https://www.disneyplus.com/de-de/home";
+const seriesEntity = "https://www.disneyplus.com/de-de/browse/entity-a67a233c-fcfe-4e8e-b000-052603ddd616";
+
+assert.equal(core.normalizeUrl("/de-de/browse/entity-abc?foo=1#x", base), "https://www.disneyplus.com/de-de/browse/entity-abc");
+assert.equal(core.normalizeUrl("https://example.com/title", base), null);
+assert.equal(core.isEntityUrl(seriesEntity), true);
+assert.equal(core.entityKey(seriesEntity), "a67a233c-fcfe-4e8e-b000-052603ddd616");
+assert.equal(core.entityKey(seriesEntity.replace("/de-de/", "/en-us/")), core.entityKey(seriesEntity));
+assert.equal(core.isPlayUrl("https://www.disneyplus.com/de-de/play/abc-123"), true);
+assert.equal(core.isSeriesBrowseUrl("https://www.disneyplus.com/de-de/browse/series"), true);
+assert.equal(core.browseScope("https://www.disneyplus.com/de-de/browse/movies"), "movies");
+assert.equal(core.browseScope("https://www.disneyplus.com/de-de/browse/originals"), "originals");
+assert.equal(core.classifyTitle({ url: seriesEntity, label: "Staffel 3 Folge 9", pageIsSeriesBrowse: false }), "series");
+assert.equal(core.classifyTitle({ url: seriesEntity, label: "Ein neuer Film", pageIsSeriesBrowse: false }), "movie");
+assert.equal(core.classifyTitle({ url: seriesEntity, label: "Titel", pageIsSeriesBrowse: true }), "series");
+assert.equal(core.resolveCatalogType({ previousType: "movie", previousScanId: "old", currentScanId: "new", contextType: "series" }), "series");
+assert.equal(core.resolveCatalogType({ previousType: "series", previousScanId: "same", currentScanId: "same", contextType: "movie" }), "series");
+assert.equal(core.resolveCatalogType({ previousType: "unknown", previousScanId: "same", currentScanId: "same", contextType: "movie" }), "movie");
+assert.equal(core.resolveCatalogType({ previousType: null, previousScanId: null, currentScanId: null, inferredType: "special" }), "special");
+assert.equal(core.parseEpisodeSeriesTitle("Family Guy Staffel 13 Folge 2 Simpsons Guy Noch 21 Minuten"), "Family Guy");
+assert.equal(core.parseEpisodeSeriesTitle("Futurama Season 8 Episode 12"), "Futurama");
+assert.equal(core.parseEpisodeSeriesTitle("Noch 21 Min.American DadS15:F3 Der Schmetterlingseffekt"), "American Dad");
+assert.equal(core.parseEpisodeSeriesTitle("8 minutes left Family Guy S7:E7 Oceans Three and a Half"), "Family Guy");
+assert.equal(core.cleanLabel("  Label: Neue Serie Test  Für Details zu diesem Titel auswählen. "), "Test");
+assert.equal(core.pickRandom(["a", "b", "c"], 0), "a");
+assert.equal(core.pickRandom(["a", "b", "c"], 0.99999), "c");
+assert.deepEqual(core.dedupeByUrl([{ url: "a" }, { url: "a" }, { url: "b" }]), [{ url: "a" }, { url: "b" }]);
+assert.deepEqual(core.normalizeFilter({ scope: "movies", category: " Comedy ", brand: " Hulu " }), { scope: "movies", category: "Comedy", brand: "Hulu", studio: "all" });
+assert.deepEqual(core.normalizeFilter({ scope: "invalid", category: "Comedy" }), { scope: "all", category: "all", brand: "all", studio: "all" });
+assert.equal(core.itemMatchesFilter({ url: "a", type: "movie", sources: ["movies"], categories: { movies: ["Comedy"] } }, { scope: "movies", category: "Comedy" }), true);
+assert.equal(core.itemMatchesFilter({ url: "a", type: "series", sources: ["series"], categories: { series: ["Drama"] }, excluded: true }, { scope: "series", category: "Drama" }), false);
+assert.equal(core.itemMatchesFilter({ url: "a", type: "series", brands: ["Hulu"], categories: { series: [] } }, { scope: "all", category: "all", brand: "Hulu" }), true);
+assert.equal(core.itemMatchesFilter({ url: "a", type: "movie", brands: ["Disney+"], studios: ["Pixar"], categories: { movies: [] } }, { scope: "all", brand: "Disney+", studio: "Pixar" }), true);
+assert.equal(core.itemMatchesFilter({ url: "a", type: "movie", brands: ["Disney+"], studios: ["Pixar"], categories: { movies: [] } }, { scope: "all", brand: "Hulu" }), false);
+assert.equal(core.itemMatchesFilter({ url: "a", type: "movie", sources: ["originals"], categories: { originals: ["Filme"] } }, { scope: "originals", category: "Filme" }), true);
+assert.deepEqual(core.catalogContextForBrowse("series", null, null), { type: "series", category: null });
+assert.deepEqual(core.catalogContextForBrowse("series", "Comedy", null), { type: "series", category: "Comedy" });
+assert.deepEqual(core.catalogContextForBrowse("movies", "Alle Filme", null), { type: "movie", category: null });
+assert.equal(core.catalogContextForBrowse("series", "Empfehlungen", null), null);
+assert.deepEqual(core.catalogContextForBrowse("originals", null, "Specials"), { type: "special", category: "Specials" });
+assert.equal(core.itemMatchesFilter({ url: "a", type: "special", sources: ["movies"], categories: { movies: ["Comedy"] } }, { scope: "movies", category: "Comedy" }), true);
+assert.equal(core.itemMatchesFilter({ url: "a", type: "series", brands: ["Disney+"], studios: ["Marvel"], categories: { series: ["Comedy"] } }, { scope: "series", category: "Comedy", brand: "Disney+", studio: "Marvel" }), true);
+assert.equal(core.itemMatchesFilter({ url: "a", type: "movie", brands: ["Disney+"], studios: ["Marvel"], categories: { movies: ["Action/Abenteuer"] } }, { scope: "movies", category: "Action/Abenteuer", brand: "Disney+", studio: "Marvel" }), true);
+assert.equal(core.itemMatchesFilter({ url: "a", type: "series", brands: ["Hulu"], studios: [], categories: { series: ["Comedy"] } }, { scope: "series", category: "Comedy", brand: "Disney+", studio: "Marvel" }), false);
+
+console.log("random-core: Scanner-Kontext und Filter erfolgreich geprüft");

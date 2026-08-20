@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Help · Disney+ Random</title>
+    <script src="i18n.js"></script>
+    <link rel="stylesheet" href="help.css">
+  </head>
+  <body>
+    <div class="page-glow page-glow-one" aria-hidden="true"></div>
+    <div class="page-glow page-glow-two" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Zum Seitenanfang">
+        <span class="brand-icon" aria-hidden="true">
+          <svg fill="none" viewBox="0 0 28 28">
+            <path d="M3 7h3.2c2.75 0 4.45 1.25 5.95 3.65l3.75 6c1.25 2 2.7 3.35 5.1 3.35h3" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="m20.5 16.5 3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 20h3.2c2.75 0 4.45-1.25 5.95-3.65l3.75-6C17.15 8.35 18.6 7 21 7h3" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20.5 3.5 24 7l-3.5 3.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>Disney+ Zufall</span>
+      </a>
+      <span class="topbar-label">Hilfe &amp; Anleitung · Version 1.0.0</span>
+    </header>
+
+    <main id="top">
+      <section class="hero-panel">
+        <div class="hero-content">
+          <p class="eyebrow"><span></span> Einfach erklärt</p>
+          <h1>Mehr Auswahl.<br><em>Weniger Suchen.</em></h1>
+          <p class="hero-text">Die Extension liest den Katalog automatisch direkt aus deinem aktuell eingeloggten Disney+ ein. Daraus entsteht deine persönliche Zufallsauswahl – vollständig lokal, ohne Standortabfrage und ohne externen Server.</p>
+          <div class="hero-actions">
+            <button class="primary-button" id="open-catalog" type="button">
+              Katalog &amp; Filter öffnen
+              <svg fill="none" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 10h11M11 5.5l4.5 4.5-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="secondary-button" id="open-disney" type="button">Disney+ öffnen</button>
+            <a class="text-link" href="#katalog-laden">So werden Titel geladen</a>
+          </div>
+        </div>
+
+        <aside class="catalog-card" aria-label="Lokaler Katalogstand">
+          <div class="catalog-orbit" aria-hidden="true">
+            <span class="orbit-ring"></span>
+            <svg fill="none" viewBox="0 0 28 28">
+              <path d="M3 7h3.2c2.75 0 4.45 1.25 5.95 3.65l3.75 6c1.25 2 2.7 3.35 5.1 3.35h3" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="m20.5 16.5 3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 20h3.2c2.75 0 4.45-1.25 5.95-3.65l3.75-6C17.15 8.35 18.6 7 21 7h3" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20.5 3.5 24 7l-3.5 3.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="catalog-label">Dein lokaler Katalog</p>
+          <p class="catalog-number"><strong id="title-count">–</strong> <span>Titel</span></p>
+          <div class="catalog-breakdown" aria-label="Aufteilung nach Inhaltstyp">
+            <p><strong id="series-count">–</strong><span>Serien</span></p>
+            <p><strong id="movie-count">–</strong><span>Filme</span></p>
+          </div>
+          <div class="local-badge"><span></span> Nur auf diesem Gerät</div>
+        </aside>
+      </section>
+
+      <section class="explanation-card" aria-labelledby="catalog-explanation">
+        <span class="explanation-icon" aria-hidden="true">i</span>
+        <div>
+          <h2 id="catalog-explanation">Was bedeuten die Katalogzahlen?</h2>
+          <p>Die große Zahl zeigt alle erkannten Titel. Darunter siehst du, wie viele davon bereits eindeutig als Serien oder Filme zugeordnet wurden. Specials und noch nicht zugeordnete Inhalte sind nur in der Gesamtzahl enthalten.</p>
+        </div>
+      </section>
+
+      <section class="section" id="katalog-laden">
+        <div class="section-intro">
+          <p class="section-kicker">In vier Schritten</p>
+          <h2>So entsteht dein aktueller Katalog</h2>
+          <p>Du musst nichts importieren, exportieren oder einzeln öffnen. Sobald Disney+ angemeldet geöffnet ist, erledigt die Extension den Abgleich im Hintergrund.</p>
+        </div>
+
+        <div class="steps">
+          <article class="step-card">
+            <span class="step-number">01</span>
+            <div class="step-icon" aria-hidden="true">
+              <svg fill="none" viewBox="0 0 24 24"><path d="M5 5.5h14v13H5v-13Z" stroke="currentColor" stroke-width="1.7"/><path d="M8 9h8M8 12h8M8 15h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Disney+ öffnen</h3>
+            <p>Ein normaler Besuch bei deinem eingeloggten Disney+ genügt als Startsignal.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number">02</span>
+            <div class="step-icon" aria-hidden="true">
+              <svg fill="none" viewBox="0 0 24 24"><path d="M7 4.5v15M7 19.5l-3-3M7 19.5l3-3M17 4.5v15M17 4.5l-3 3M17 4.5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Automatisch abgleichen</h3>
+            <p>Serien, Filme, Originals, Disney+, Hulu und die angebotenen Studioseiten werden in einem inaktiven Hintergrund-Tab selbstständig durchlaufen.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number">03</span>
+            <div class="step-icon" aria-hidden="true">
+              <svg fill="none" viewBox="0 0 24 24"><path d="M4.5 7.5 12 3l7.5 4.5v9L12 21l-7.5-4.5v-9Z" stroke="currentColor" stroke-width="1.7"/><path d="m4.8 7.7 7.2 4.2 7.2-4.2M12 12v8.6" stroke="currentColor" stroke-width="1.7"/></svg>
+            </div>
+            <h3>Aktuelles Angebot</h3>
+            <p>Quelle ist nur das Disney+, das dir gerade Inhalte zeigt – ohne GPS oder Standortdienst.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number">04</span>
+            <div class="step-icon" aria-hidden="true">
+              <svg fill="none" viewBox="0 0 24 24"><path d="M4 7h2.5c2.4 0 3.6 1 4.8 3l2.3 4c1.15 2 2.4 3 4.8 3H20M17 14l3 3-3 3M4 17h2.5c2.4 0 3.6-1 4.8-3l2.3-4c1.15-2 2.4-3 4.8-3H20M17 4l3 3-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Sofort weitersehen</h3>
+            <p>Der fertige Katalog bleibt lokal. Ein erfolgreicher Vollscan wird frühestens nach zwölf Stunden automatisch wiederholt; über „Jetzt vollständig abgleichen“ kannst du ihn jederzeit manuell starten.</p>
+          </article>
+        </div>
+
+        <div class="tip"><strong>Privat:</strong> Es gibt keine Standortabfrage und keinen externen Katalogserver. Bei Reisen zählt ausschließlich das Angebot, das dein aktuelles Disney+ selbst ausliefert.</div>
+      </section>
+
+      <section class="section">
+        <div class="section-intro compact">
+          <p class="section-kicker">Alle Funktionen</p>
+          <h2>Was macht welcher Knopf?</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-symbol violet" aria-hidden="true">✦</span>
+            <h3>Zufallsempfehlung</h3>
+            <p>Öffnet nur die Detailseite eines Titels, der zu deinem Filter passt. Es wird dabei noch nichts abgespielt.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-symbol blue" aria-hidden="true">☷</span>
+            <h3>Katalog &amp; Filter</h3>
+            <p>Filtert nach Serien, Filmen, Originals, Kategorie, Disney+/Hulu und optional Disney+-Studio. Titel lassen sich pausieren oder löschen.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-symbol blue" aria-hidden="true">↝</span>
+            <h3>Filter als Serienmix</h3>
+            <p>Wählt unter den passenden Serien direkt eine zufällige Serie und Folge. Bei einem Filmfilter wird stattdessen ein zufälliger Film gestartet. Für Serien bleibt der Filter die Quelle weiterer Zufallsfolgen.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-symbol violet" aria-hidden="true">☷</span>
+            <h3>Lokale Playlists</h3>
+            <p>Fasse etwa Family Guy, American Dad und Die Simpsons zu einem eigenen Mix zusammen. Playlists bleiben nur in deinem Browser.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-symbol cyan" aria-hidden="true">▶</span>
+            <h3>Zufällige Folge</h3>
+            <p>Ist auf einer Serienseite verfügbar. Die Extension wählt zuerst eine Staffel und danach eine Folge.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-symbol cyan" aria-hidden="true">∞</span>
+            <h3>Folgen zufällig fortsetzen</h3>
+            <p>Der Shuffle-Knopf im Player schaltet den Modus an oder aus. Aktiv verwendet er die aktuelle Serie, den gewählten Filter oder die aktive Playlist. Türkis bedeutet: aktiv.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-symbol blue" aria-hidden="true">↗</span>
+            <h3>Serie direkt starten</h3>
+            <p>Versucht nach der Serienauswahl direkt die von Disney+ angebotene nächste Folge zu öffnen.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-symbol violet" aria-hidden="true">✓</span>
+            <h3>Gesehene Folgen auslassen</h3>
+            <p>Überspringt Folgen, die Disney+ auf der Serienseite bereits als vollständig angesehen markiert.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section faq-section">
+        <div class="section-intro compact">
+          <p class="section-kicker">Wenn etwas unklar ist</p>
+          <h2>Kurz beantwortet</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Warum dauert der erste vollständige Abgleich einige Minuten?</summary>
+            <p>Disney+ lädt seinen Katalog dynamisch und nach und nach. Die Extension durchläuft die Bereiche automatisch, verwendet aber keine geheime oder externe Schnittstelle. Um den Browser zu schonen, wird der Katalog nur am Ende jedes Bereichs gespeichert und ein erfolgreicher Vollscan höchstens alle zwölf Stunden automatisch wiederholt.</p>
+          </details>
+          <details>
+            <summary>Was passiert, wenn ich während des Abgleichs ein Video starte?</summary>
+            <p>Die Wiedergabe hat Vorrang. Die Extension schließt den Scan-Tab automatisch, damit er dem Player keine Leistung wegnimmt. Den vollständigen Abgleich kannst du später auf der Katalogseite erneut starten.</p>
+          </details>
+          <details>
+            <summary>Wie funktionieren Kategorie- und Studiofilter?</summary>
+            <p>Beim vollständigen Abgleich öffnet die Extension automatisch die aktuell angebotenen Studioseiten und ordnet deren Titel zu. Disney+-Studios erscheinen anschließend als erweiterte Auswahl unter dem Herkunftsfilter Disney+.</p>
+          </details>
+          <details>
+            <summary>Warum ist „Zufällige Folge“ manchmal ausgegraut?</summary>
+            <p>Diese Funktion braucht die Folgenliste einer konkreten Serie. Öffne zuerst die Detailseite der gewünschten Serie; dort wird der Knopf aktiv.</p>
+          </details>
+          <details>
+            <summary>Wie erstelle ich einen Mix aus bestimmten Serien?</summary>
+            <p>Öffne „Katalog &amp; Filter“, erstelle unter „Lokale Playlists“ eine Playlist und wähle sie zum Bearbeiten aus. Suche anschließend deine Serien im Katalog und füge sie mit dem Listenknopf hinzu. „Aktivieren &amp; abspielen“ startet den Mix.</p>
+          </details>
+          <details>
+            <summary>Was steuert der Shuffle-Knopf im Player?</summary>
+            <p>Er schaltet die fortlaufende Zufallswiedergabe an oder aus. Die zuletzt gewählte Quelle bleibt gespeichert: entweder die aktuelle Serie, dein aktiver Filter oder eine Playlist. Der Hover-Text am Knopf zeigt die aktive Quelle.</p>
+          </details>
+          <details>
+            <summary>Wo werden meine Titel und Einstellungen gespeichert?</summary>
+            <p>Ausschließlich im lokalen Extension-Speicher deines Browsers. Die Extension besitzt keine Analyse, Werbung, Telemetrie oder externen Server.</p>
+          </details>
+          <details>
+            <summary>Was mache ich nach einem Extension-Update?</summary>
+            <p>Lade die Extension auf der Erweiterungsseite neu und aktualisiere danach den bereits geöffneten Disney+-Tab einmal vollständig.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="privacy-panel">
+        <div class="privacy-mark" aria-hidden="true">
+          <svg fill="none" viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.4c0 4.25-2.65 7.45-7 9.1-4.35-1.65-7-4.85-7-9.1V6l7-2.5Z" stroke="currentColor" stroke-width="1.7"/><path d="m8.8 12 2.05 2.05 4.4-4.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h2>Privat bleibt privat.</h2>
+          <p>Keine Kontodaten, kein Verlauf und keine erkannten Titel verlassen deinen Browser. Die Extension verändert weder DRM noch dein Disney+-Konto.</p>
+        </div>
+        <div class="privacy-points">
+          <span>Keine Werbung</span><span>Keine Analyse</span><span>Keine Cloud</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <span>Disney+ Zufall · Version 1.0.0</span>
+      <span>Private, nicht mit Disney verbundene Browser-Extension</span>
+    </footer>
+    <script src="help.js"></script>
+  </body>
+</html>

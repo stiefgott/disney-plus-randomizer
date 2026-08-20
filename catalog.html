@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Catalog · Disney+ Random</title>
+    <script src="i18n.js"></script>
+    <link rel="stylesheet" href="catalog.css">
+  </head>
+  <body>
+    <div class="page-glow glow-one" aria-hidden="true"></div>
+    <div class="page-glow glow-two" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Zum Seitenanfang">
+        <span class="brand-icon" aria-hidden="true">
+          <svg fill="none" viewBox="0 0 28 28">
+            <path d="M3 7h3.2c2.75 0 4.45 1.25 5.95 3.65l3.75 6c1.25 2 2.7 3.35 5.1 3.35h3" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="m20.5 16.5 3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 20h3.2c2.75 0 4.45-1.25 5.95-3.65l3.75-6C17.15 8.35 18.6 7 21 7h3" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20.5 3.5 24 7l-3.5 3.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>Disney+ Zufall</span>
+      </a>
+      <nav>
+        <a href="help.html">Anleitung</a>
+        <span>Version 1.0.0</span>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          <p class="eyebrow"><span></span> Dein lokaler Katalog</p>
+          <h1>Bestimme, was der<br><em>Zufall auswählen darf.</em></h1>
+          <p class="hero-copy">Alle Titel bleiben ausschließlich in deinem Browser. Filter steuern die nächste Zufallsauswahl; deaktivierte oder gelöschte Titel werden dabei nicht verwendet.</p>
+        </div>
+        <div class="hero-stats" aria-label="Katalogstatistik">
+          <article><strong id="stat-total">0</strong><span>Titel</span></article>
+          <article><strong id="stat-enabled">0</strong><span>aktiv</span></article>
+          <article><strong id="stat-series">0</strong><span>Serien</span></article>
+          <article><strong id="stat-movies">0</strong><span>Filme</span></article>
+        </div>
+      </section>
+
+      <section class="scan-card" aria-labelledby="scan-title">
+        <div>
+          <p class="section-kicker">Automatisch &amp; privat</p>
+          <h2 id="scan-title">Der aktuelle Disney+-Katalog wird selbstständig eingelesen</h2>
+          <p>Die Extension arbeitet in einem inaktiven Tab direkt mit deinem eingeloggten Disney+ und fragt keinen Standort ab. Sie öffnet, minimiert oder fokussiert dafür keine zusätzlichen Browserfenster. So entspricht die Auswahl dem Angebot, das Disney+ dir aktuell zeigt – auch auf Reisen.</p>
+          <p class="scan-status" id="scan-status"><i></i><span>Bereit für den automatischen Abgleich</span></p>
+        </div>
+        <div class="scan-actions">
+          <button class="scan-primary" id="start-auto-scan" type="button">Jetzt vollständig abgleichen</button>
+          <button type="button" data-open="series">Serien</button>
+          <button type="button" data-open="movies">Filme</button>
+          <button type="button" data-open="originals">Originals</button>
+          <button type="button" data-open="disneyplus">Disney+</button>
+          <button type="button" data-open="hulu">Hulu</button>
+        </div>
+      </section>
+
+      <section class="filter-card" aria-labelledby="filter-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Aktive Zufallsauswahl</p>
+            <h2 id="filter-title">Was darf gewürfelt werden?</h2>
+          </div>
+          <span class="saved-state" id="saved-state"><i></i> Automatisch gespeichert</span>
+        </div>
+
+        <div class="filter-grid">
+          <label>
+            <span>Inhalt</span>
+            <select id="random-scope">
+              <option value="all">Alles</option>
+              <option value="series">Serien</option>
+              <option value="movies">Filme</option>
+              <option value="originals">Originals</option>
+            </select>
+          </label>
+          <label>
+            <span>Kategorie</span>
+            <select id="random-category"><option value="all">Alle Kategorien</option></select>
+          </label>
+          <label>
+            <span>Herkunft</span>
+            <select id="random-brand"><option value="all">Disney+ &amp; Hulu</option></select>
+          </label>
+          <label id="studio-field" hidden>
+            <span>Disney+-Studio <small>Erweitert</small></span>
+            <select id="random-studio"><option value="all">Alle Studios</option></select>
+          </label>
+        </div>
+        <div class="filter-result">
+          <span class="filter-icon" aria-hidden="true">↝</span>
+          <p><strong id="filter-count">0 Titel</strong><span id="filter-description">passen aktuell zu dieser Auswahl.</span></p>
+          <div class="filter-result-actions">
+            <button id="recommend-filter" type="button">Nur empfehlen</button>
+            <button class="filter-play" id="play-filter" type="button">Serien zufällig abspielen</button>
+            <button id="clear-random-filter" type="button">Zurücksetzen</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="playlist-section" aria-labelledby="playlist-title">
+        <div class="section-heading playlist-heading">
+          <div>
+            <p class="section-kicker">Deine Serienmixe</p>
+            <h2 id="playlist-title">Lokale Playlists</h2>
+            <p>Stelle eigene Seriengruppen zusammen. Ist eine Playlist aktiv, wählt der Player nach jeder Folge zufällig eine Serie und eine Folge daraus.</p>
+          </div>
+          <button class="source-reset" id="use-current-series" type="button">Nur aktuelle Serie verwenden</button>
+        </div>
+
+        <form class="playlist-create" id="playlist-create-form">
+          <label for="playlist-name">Neue Playlist</label>
+          <div>
+            <input id="playlist-name" type="text" maxlength="48" placeholder="z. B. Animationsabend" autocomplete="off" required>
+            <button type="submit">Playlist erstellen</button>
+          </div>
+        </form>
+
+        <div class="playlist-grid" id="playlist-grid"></div>
+        <div class="playlist-empty" id="playlist-empty">
+          <span aria-hidden="true">☷</span>
+          <p><strong>Noch keine Playlist</strong>Erstelle eine Playlist und füge ihr unten deine Serien hinzu.</p>
+        </div>
+      </section>
+
+      <section class="catalog-section" aria-labelledby="catalog-title">
+        <div class="section-heading catalog-heading">
+          <div>
+            <p class="section-kicker">Verwalten</p>
+            <h2 id="catalog-title">Deine gespeicherten Titel</h2>
+          </div>
+          <button class="danger-quiet" id="reset-catalog" type="button">Katalog zurücksetzen</button>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-field">
+            <svg fill="none" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3" stroke="currentColor" stroke-width="1.8"/><path d="m15.5 15.5 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <input id="catalog-search" type="search" placeholder="Titel suchen …" autocomplete="off">
+          </label>
+          <select id="view-type" aria-label="Nach Typ filtern">
+            <option value="all">Alle Typen</option>
+            <option value="series">Nur Serien</option>
+            <option value="movie">Nur Filme</option>
+            <option value="special">Nur Specials</option>
+            <option value="unknown">Noch nicht zugeordnet</option>
+          </select>
+          <select id="view-status" aria-label="Nach Status filtern">
+            <option value="all">Aktiv &amp; pausiert</option>
+            <option value="enabled">Nur aktiv</option>
+            <option value="excluded">Nur pausiert</option>
+          </select>
+          <select id="view-brand" aria-label="Nach Herkunft filtern"><option value="all">Alle Herkünfte</option></select>
+          <select id="view-category" aria-label="Nach Kategorie filtern"><option value="all">Alle Kategorien</option></select>
+        </div>
+
+        <div class="playlist-editor">
+          <label for="edit-playlist">Playlist bearbeiten</label>
+          <select id="edit-playlist"><option value="">Erst eine Playlist erstellen</option></select>
+          <p id="edit-playlist-hint">Erstelle zuerst eine Playlist und füge danach Serien aus dem Katalog hinzu.</p>
+        </div>
+
+        <div class="bulkbar">
+          <p><strong id="visible-count">0 / 0</strong> angezeigt</p>
+          <div>
+            <button id="enable-visible" type="button">Sichtbare aktivieren</button>
+            <button id="disable-visible" type="button">Sichtbare pausieren</button>
+          </div>
+        </div>
+
+        <div class="catalog-grid" id="catalog-grid" aria-live="polite"></div>
+        <button class="load-more" id="load-more-titles" type="button" hidden>Weitere Titel anzeigen</button>
+        <div class="empty-state" id="empty-state" hidden>
+          <span aria-hidden="true">⌁</span>
+          <h3>Noch nichts Passendes hier</h3>
+          <p id="empty-copy">Öffne bei Disney+ eine Übersicht und scrolle durch die Titel.</p>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="reset-dialog">
+      <form method="dialog">
+        <span class="dialog-icon" aria-hidden="true">!</span>
+        <h2>Katalog wirklich zurücksetzen?</h2>
+        <p>Alle erkannten Titel, Kategorien, Playlists, Sperren und der Zufallsverlauf werden lokal gelöscht. Deine Wiedergabe-Einstellungen bleiben erhalten.</p>
+        <div class="dialog-actions">
+          <button value="cancel">Abbrechen</button>
+          <button class="danger" value="confirm">Alles zurücksetzen</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="playlist-delete-dialog">
+      <form method="dialog">
+        <span class="dialog-icon" aria-hidden="true">!</span>
+        <h2>Playlist löschen?</h2>
+        <p>„<span id="playlist-delete-name" translate="no"></span>“ wird nur lokal gelöscht. Serien und Katalog bleiben unverändert.</p>
+        <div class="dialog-actions">
+          <button value="cancel">Abbrechen</button>
+          <button class="danger" value="confirm">Playlist löschen</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="random-core.js"></script>
+    <script src="catalog.js"></script>
+  </body>
+</html>
