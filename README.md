@@ -1,4 +1,4 @@
-# Disney+ Random
+# Disney+ Randomizer
 
 An unofficial, privacy-friendly browser extension that adds random title, series, movie, and episode selection to Disney+.
 
